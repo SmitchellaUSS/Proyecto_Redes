@@ -4,10 +4,7 @@ services:
   servidor:
     build:
       context: .
-      dockerfile: Dockerfile
-    ports:
-      - "5000:5000"
-      - "5001:5001"
+    network_mode: host  # Acceso directo a la red del host para usar wlan0
     environment:
       POSTGRES_DB: red_datos
       POSTGRES_USER: pokemon
@@ -28,3 +25,4 @@ services:
 
 volumes:
   db_data:
+
