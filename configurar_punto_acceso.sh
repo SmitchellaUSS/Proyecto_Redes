@@ -19,10 +19,13 @@ dhcp-range=192.168.50.10,192.168.50.100,24h
 EOL
 
 echo "Habilitando el reenvío de tráfico..."
-sed -i 's/#net.ipv4.ip_forward=1/net.ipv4.ip_forward=1/' /etc/sysctl.conf
+# Asegúrate de que el contenedor tenga permisos para modificar este valor
+echo "net.ipv4.ip_forward=1" >> /proc/sys/net/ipv4/ip_forward
 
 echo "Reiniciando servicios..."
-sudo systemctl restart hostapd
-sudo systemctl restart dnsmasq
+# Usa los servicios directamente sin `sudo`
+systemctl restart hostapd || echo "Error al reiniciar hostapd. ¿Está instalado?"
+systemctl restart dnsmasq || echo "Error al reiniciar dnsmasq. ¿Está instalado?"
 
 echo "Configuración completada."
+"
