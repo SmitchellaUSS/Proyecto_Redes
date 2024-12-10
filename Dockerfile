@@ -6,6 +6,7 @@ RUN apt-get update && apt-get install -y \
     libpq-dev \
     hostapd \
     dnsmasq \
+    iproute2 \
     && rm -rf /var/lib/apt/lists/*
 
 # Configurar directorio de trabajo
