@@ -8,7 +8,7 @@
    cd Proyecto_Redes
 
 2.Construye y ejecuta los contenedores:
-   ```bash
+   `bash
    docker-compose up --build
 
 Los servicios estarán disponibles en:
